@@ -1,7 +1,17 @@
+import PT from 'prop-types';
+
 import { ButtonStyled } from './Button.styled';
 
-const Button = () => {
-  return <ButtonStyled type="button">Load more</ButtonStyled>;
+const Button = ({ onClick }) => {
+  return (
+    <ButtonStyled type="button" onClick={() => onClick()}>
+      Load more
+    </ButtonStyled>
+  );
 };
 
 export default Button;
+
+Button.propTypes = {
+  onClick: PT.func.isRequired,
+};

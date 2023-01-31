@@ -1,6 +1,7 @@
 import PT from 'prop-types';
 import React, { Component } from 'react';
 import { BiSearchAlt2 } from 'react-icons/bi';
+import { toast } from 'react-toastify';
 
 import {
   ButtonLabel,
@@ -22,14 +23,12 @@ class Searchbar extends Component {
 
   onFormSubmit = e => {
     e.preventDefault();
-    const { name } = this.state;
 
-    name !== '' ? this.props.onSubmit(name) : alert('hhhhh');
-    // if (name.length > 0) {
-    //   this.props.onSubmit(name);
-    // } else {
-    //   this.createNotification();
-    // }
+    this.state.name !== ''
+      ? this.props.onSubmit(this.state.name)
+      : toast.error('🥺 Please enter a picture name', {
+          autoClose: 2000,
+        });
 
     this.reset();
   };

@@ -1,11 +1,18 @@
+import PT from 'prop-types';
+
 import { GalleryItemStyled, ImageStyled } from './ImageGallery.styled';
 
-const ImageGalleryItem = () => {
+export const ImageGalleryItem = ({ imgId, webImg, largeImg, tags }) => {
   return (
-    <GalleryItemStyled>
-      <ImageStyled src="" alt="" />
+    <GalleryItemStyled key={imgId}>
+      <ImageStyled src={webImg} alt={tags} />
     </GalleryItemStyled>
   );
 };
 
-export default ImageGalleryItem;
+ImageGalleryItem.propTypes = {
+  imgId: PT.number,
+  webImg: PT.string,
+  largeImg: PT.string,
+  tags: PT.string,
+};

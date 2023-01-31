@@ -1,37 +1,15 @@
-import { Button, ImageGallery, Loader, Modal, Searchbar } from 'components';
-import PT from 'prop-types';
+import 'react-toastify/dist/ReactToastify.css';
+
+import { ImageGallery, Searchbar } from 'components';
 import React, { PureComponent } from 'react';
+import { ToastContainer } from 'react-toastify';
 
 import { AppStyled } from './App.styled';
 
 export class App extends PureComponent {
   state = {
-    searchName: '',
-    imgData: null,
-    isLoading: false,
-    apiPage: '',
+    name: '',
   };
-
-  // async componentDidMount(name) {
-  //   console.log(name);
-  //   this.setState({ isLoading: true });
-  //   const key = '32589447-ffbdd7a8f0a573b29764024b7';
-  //   const searchName = this.state.name;
-  //   axios.defaults.baseURL = 'https://pixabay.com/api/';
-  //   if (name !== searchName) {
-  //     try {
-  //       const response = await axios.get(
-  //         `?q=${name}&page=1&key=${key}&image_type=photo&orientation=horizontal&per_page=12`
-  //       );
-  //       console.log(response);
-  //       this.setState({ img: response.data.hits, name });
-  //     } catch (error) {
-  //       this.setState({ error });
-  //     } finally {
-  //       this.setState({ isLoading: false });
-  //     }
-  //   }
-  // }
 
   onFormSubmit = name => {
     this.setState({ name });
@@ -40,12 +18,8 @@ export class App extends PureComponent {
     return (
       <AppStyled>
         <Searchbar onSubmit={this.onFormSubmit} />
-        <ImageGallery />
-        {this.state.isLoading && <Loader />}
-        <Button />
-        {/* <Modal>
-          <p>j</p>
-        </Modal> */}
+        <ImageGallery searchName={this.state.name} />
+        <ToastContainer />
       </AppStyled>
     );
   }
