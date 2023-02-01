@@ -2,10 +2,10 @@ import PT from 'prop-types';
 
 import { GalleryItemStyled, ImageStyled } from './ImageGallery.styled';
 
-export const ImageGalleryItem = ({ imgId, webImg, largeImg, tags }) => {
+export const ImageGalleryItem = ({ imgId, webImg, tags, toggleModal }) => {
   return (
     <GalleryItemStyled key={imgId}>
-      <ImageStyled src={webImg} alt={tags} />
+      <ImageStyled src={webImg} alt={tags} onClick={() => toggleModal()} />
     </GalleryItemStyled>
   );
 };
@@ -13,6 +13,6 @@ export const ImageGalleryItem = ({ imgId, webImg, largeImg, tags }) => {
 ImageGalleryItem.propTypes = {
   imgId: PT.number,
   webImg: PT.string,
-  largeImg: PT.string,
   tags: PT.string,
+  toggleModal: PT.func,
 };
