@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const GalleryListStyled = styled.div`
+export const GalleryListStyled = styled.ul`
   display: grid;
   max-width: calc(100vw - 48px);
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
@@ -13,7 +13,7 @@ export const GalleryListStyled = styled.div`
   margin-right: auto;
 `;
 
-export const GalleryItemStyled = styled.ul`
+export const GalleryItemStyled = styled.li`
   border-radius: 2px;
   box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2),
     0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12);
@@ -32,7 +32,7 @@ export const ImageStyled = styled.img`
 `;
 
 export const ImageLarge = styled.img`
-  width: 100%;
+  width: 700px;
   height: 500px;
   object-fit: cover;
   transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);

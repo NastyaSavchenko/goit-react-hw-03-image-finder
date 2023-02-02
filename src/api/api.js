@@ -9,7 +9,7 @@ export const onSearch = (name, page) => {
       key: API_KEY,
       q: name,
       page: `${page}`,
-      per_page: 50,
+      per_page: 12,
       image_type: 'photo',
       orientation: 'horizontal',
     },
