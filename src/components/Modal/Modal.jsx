@@ -1,12 +1,12 @@
 import PT from 'prop-types';
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { createPortal } from 'react-dom';
 
 import { ModalStyled, Overlay } from './Modal.styled';
 
-const modalRoot = document.querySelector('#modal-root');
+const modalRoot = document.getElementById('modal-root');
 
-export default class Modal extends Component {
+export default class Modal extends PureComponent {
   componentDidMount() {
     window.addEventListener('keydown', this.handleKeydown);
   }
@@ -16,22 +16,16 @@ export default class Modal extends Component {
   }
 
   handleKeydown = e => {
-    if (e.code === 'Escape') {
-      this.props.onClose();
-    }
+    if (e.code === 'Escape') this.props.onClose();
   };
 
   onBackdropClick = event => {
-    console.log('c', event.currentTarget);
-    console.log('t', target);
-    if (event.currentTarget === event.target) {
-      this.props.onClose();
-    }
+    if (event.currentTarget === event.target) this.props.onClose();
   };
 
   render() {
     return createPortal(
-      <Overlay onClick={() => this.onBackdropClick()}>
+      <Overlay onClick={this.onBackdropClick}>
         <ModalStyled>{this.props.children}</ModalStyled>
       </Overlay>,
       modalRoot

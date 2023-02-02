@@ -1,5 +1,5 @@
 import PT from 'prop-types';
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { BiSearchAlt2 } from 'react-icons/bi';
 import { toast } from 'react-toastify';
 
@@ -11,7 +11,7 @@ import {
   SearchFormInput,
 } from './Searchbar.styled';
 
-class Searchbar extends Component {
+class Searchbar extends PureComponent {
   state = {
     name: '',
   };
@@ -26,9 +26,7 @@ class Searchbar extends Component {
 
     this.state.name !== ''
       ? this.props.onSubmit(this.state.name)
-      : toast.error('🥺 Please enter a picture name', {
-          autoClose: 2000,
-        });
+      : toast.error('🥺 Please enter a picture name');
 
     this.reset();
   };
